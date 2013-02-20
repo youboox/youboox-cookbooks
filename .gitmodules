@@ -1,3 +1,6 @@
 [submodule "cookbooks/foreman"]
 	path = cookbooks/foreman
 	url = git://github.com/AKQACookbooks/foreman.git
+[submodule "foreman"]
+	path = foreman
+	url = git://github.com/AKQACookbooks/foreman.git
