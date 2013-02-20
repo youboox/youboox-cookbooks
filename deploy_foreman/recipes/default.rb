@@ -5,7 +5,7 @@ node[:deploy].each do |application, deploy|
   end
 
   foreman_export application do
-    log "/var/log/#{application.log}"
+    log "/var/log/#{application}.log"
     user deploy[:deploy_to]
     procfile "#{deploy[:current_path]}/Procfile"
     process_types ["job"]
