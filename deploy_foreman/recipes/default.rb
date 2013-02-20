@@ -6,12 +6,11 @@ node[:deploy].each do |application, deploy|
     next
   end
 
-  service application do
-    action [:enable]
+  execute "setup foreman for #{application}" do
+    command "foreman export -f /srv/www/#{application}/current/Procfile -a #{application} -u deploy -l /var/log/ -e /srv/www/#{application}/current/#{deploy[:rails_env]}.env upstart /etc/init"
   end
 
-  execute "setup foreman for #{application}" do
-    command "foreman export -f /srv/www/#{application}/current/Procfile -a #{application} -u deploy -l /var/log/ upstart /etc/init"
-    notifies :restart, resources(:service => application)
+  execute "restart #{application}" do
+    command "initctl restart #{application}"
   end
 end
