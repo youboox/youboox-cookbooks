@@ -11,7 +11,7 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "setup foreman for #{application}" do
-    command "foreman export inittab /etc/init.d/#{application} --user=deploy -l /var/log/ -f '#{deploy[:current_path]}/Procfile'"
+    command "foreman export -f /srv/www/#{application}/current/Procfile -a #{application} -u deploy -l /var/log/ upstart /etc/init"
     notifies :restart, resources(:service => application)
   end
 end
