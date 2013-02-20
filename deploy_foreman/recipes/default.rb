@@ -7,10 +7,10 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "setup foreman for #{application}" do
-    command "foreman export -f /srv/www/#{application}/current/Procfile -a #{application} -u deploy -l /var/log/ -e /srv/www/#{application}/current/#{deploy[:rails_env]}.env upstart /etc/init"
+    command "foreman export -f /srv/www/#{application}/current/Procfile -a #{application} -u deploy -l /var/log/#{application} -e /srv/www/#{application}/current/#{deploy[:rails_env]}.env upstart /etc/init"
   end
 
   execute "restart #{application}" do
-    command "initctl restart #{application}"
+    command "initctl restart #{application} || initctl start #{application}"
   end
 end
