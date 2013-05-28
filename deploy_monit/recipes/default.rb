@@ -9,6 +9,6 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "restart #{application}" do
-    command "monit reload && sleep 2 && monit restart #{application}"
+    command "monit reload && sleep 2 && monit restart -g #{application}"
   end
 end
