@@ -1,4 +1,9 @@
-arch = kernel['machine'] =~ /x86_64/ ? "x86_64" : "i686"
+arch = nil
+if `uname -p` =~ /x86_64/
+  arch = "x86_64"
+else
+  arch = "i686"
+end
 
 bash "install_phantomjs" do
   user "root"
