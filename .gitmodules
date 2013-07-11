@@ -1,0 +1,3 @@
+[submodule "pdftk"]
+	path = pdftk
+	url = https://github.com/heavywater/chef-pdftk.git
