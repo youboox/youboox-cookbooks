@@ -1,4 +1,1 @@
-[submodule "pdftk"]
-	path = pdftk
-  url = https://github.com/noplay/chef-pdftk.git
 
