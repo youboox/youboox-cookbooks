@@ -1,0 +1,1 @@
+default[:opsworks_initial_setup][:bind_mounts][:mounts]['/tmp'] = "#{node[:opsworks_initial_setup][:ephemeral_mount_point]}/tmp"
